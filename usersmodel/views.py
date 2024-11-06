@@ -206,7 +206,7 @@ class MessageViewSet(viewsets.ModelViewSet):
         message.is_edited = True
         message.save()
         return Response({"message_id": message.id}, status=status.HTTP_200_OK)
-    @action(detail=False, methods=['post'], url_path='upload', permission_classes=[IsAuthenticated])
+    @action(detail=False, methods=['post'], url_path='upload', permission_classes=[permissions.IsAuthenticated])
     def upload_media(self, request, *args, **kwargs):
         chat_id = request.data.get('chat_id')
         chat = Chat.objects.get(id=chat_id)

@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import FriendshipViewSet, FollowerViewSet,UserListViewSet,FullUserListViewSet, HashtagViewSet,UserSearchView, ChatViewSet,NotificationViewSet, MessageViewSet,ChatView,ChatHistoryView,BugReportViewSet,FeedbackViewSet
+from .views import FriendshipViewSet, FollowerViewSet,UserListViewSet,FullUserListViewSet, HashtagViewSet,UserSearchView, ChatViewSet,NotificationViewSet, MessageViewSet,ChatHistoryView,BugReportViewSet,FeedbackViewSet
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
 from drf_yasg import openapi
@@ -31,7 +31,6 @@ schema_view = get_schema_view(
     permission_classes=(permissions.IsAdminUser,),
 )
 urlpatterns = [
-    path('chat/<int:chat_id>/', ChatView.as_view(), name='chat'),
     path('users/search/', UserSearchView.as_view(), name='user-search'),
     path('api/chat/<int:chat_id>/history/', ChatHistoryView.as_view(), name='chat-history'),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
